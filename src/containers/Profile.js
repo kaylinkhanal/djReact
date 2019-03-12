@@ -20,4 +20,4 @@ const mapDispatchTOProps =dispatch =>{
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps,mapDispatchTOProps)(Profile);
