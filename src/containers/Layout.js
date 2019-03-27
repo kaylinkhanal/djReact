@@ -29,21 +29,28 @@ class CustomLayout extends React.Component {
             )}
           </Menu>
         </Header>
-        <Content style={{ padding: "0 50px" }}>
+                  <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>
-              <Link to="/">Home</Link>
-            </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/">Home</Link>
+          </Breadcrumb.Item>
+          {this.props.token !== null ? (
             <Breadcrumb.Item>
               <Link to={`/profiles/${this.props.userId}`}>Profile</Link>
             </Breadcrumb.Item>
+          ) : null}
+          {this.props.token !== null && this.props.is_teacher ? (
+            <Breadcrumb.Item>
+              <Link to="/create">Create</Link>
+            </Breadcrumb.Item>
+          ) : null}
           </Breadcrumb>
           <div style={{ background: "#fff", padding: 24, minHeight: 280 }}>
             {this.props.children}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2016 Created by Ant UED
+        
         </Footer>
       </Layout>
     );
@@ -52,7 +59,9 @@ class CustomLayout extends React.Component {
 
 const mapStateToProps =state =>{
   return {
-    userId:state.auth.userId
+    userId:state.auth.userId,
+    token: state.auth.token,
+    is_teacher:state.auth.is_teacher
   };
 };
 

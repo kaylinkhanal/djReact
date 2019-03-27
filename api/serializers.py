@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Assignment,Question
-
+from users.models import User
+from .models import Assignment, Question, Choice
 
 class StringSerializer(serializers.StringRelatedField):
     def to_internal_value(self,value):
